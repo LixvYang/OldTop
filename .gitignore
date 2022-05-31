@@ -1,7 +1,8 @@
 # ignore All log files
 *.log
 
-# ignore All file in Any directory named temp 
+# ignore keystore file
 config/
 
-# ignore keystore file
+# ignore *.exe file
+*.exe
