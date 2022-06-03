@@ -13,6 +13,11 @@ import (
 
 func mtgSwap(receiverID, payAssetID, fillAssetID, amount string) error {
 	ctx := context.Background()
+	pairs, err := fswap.ListPairs(ctx)
+	if err != nil {
+		return err
+	}
+	log.Println(pairs)
 	// use the 4swap's MTG api endpoint
 	fswap.UseEndpoint(fswap.MtgEndpoint)
 

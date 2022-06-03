@@ -69,21 +69,6 @@ func main() {
 			askForSymbol(ctx, msg)
 		}
 
-		// if msg.Category == mixin.MessageCategorySystemAccountSnapshot {
-		// 	// if the message is a transfer message
-		// 	// and it is sent by other users, then handle it
-		// 	if msg.UserID != client.ClientID {
-		// 		return handleTransfer(ctx, msg)
-		// 	}
-		// 	// or just drop it
-		// 	return nil
-		// } else if msg.Category == mixin.MessageCategoryPlainText {
-		// 	// if the message is a text message
-		// 	// then handle the message
-		// 	return handleTextMessage(ctx, msg)
-		// } else {
-		// 	return askForSymbol(ctx, msg)
-		// }
 		return nil
 	}
 

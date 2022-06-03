@@ -34,6 +34,10 @@ var (
 func initAssets() {
 	// Gather assets from https://api.4swap.org/api/assets
 	resp, err := http.Get("https://api.4swap.org/api/assets")
+	// assets, err := client.ReadAssets(context.Background()) 
+	// for _, a := range assets {
+	// 	log.Println(a.Name)
+	// }
 	if err != nil {
 		log.Fatalln(err)
 	}
