@@ -20,6 +20,14 @@ func handleTextMessage(ctx context.Context, msg *mixin.MessageView) error {
 		return err
 	}
 
+	// if string(msgContent) == "知乎" {
+	// 	buttons := fmt.Sprintf(`[{
+	// 		"label": "知乎",
+	// 		"color": "#87CEFA",
+	// 	}]`)
+	// 	respond(ctx, msg, mixin.MessageCategoryPlainText, []byte(buttons), 1)
+	// }
+
 	// Is it "cancel"? if so, reset the session
 	if strings.ToUpper(string(msgContent)) == "CANCEL" {
 		if err := askForSymbol(ctx, msg); err != nil {

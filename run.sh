@@ -1,2 +1,3 @@
 #!bash.sh
-go run main.go -config ./config/keystore.json
+go build 
+./oldtop -config ./config/keystore.json -pin 751243
