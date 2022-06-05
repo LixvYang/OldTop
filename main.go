@@ -45,14 +45,15 @@ func main() {
 	// Get supported assets from 4swap
 	initAssets()
 
+	// Prepare the message loop that handle every incoming messages,
+	// We use a callback function to handle them.
 	h := func(ctx context.Context, msg *mixin.MessageView, userID string) error {
 		// if there is no valid user id in the message, drop it
 		if userID, _ := uuid.FromString(msg.UserID); userID == uuid.Nil {
 			return nil
 		}
 
-		switch msg.Category {
-		case mixin.MessageCategorySystemAccountSnapshot:
+		if msg.Category == mixin.MessageCategorySystemAccountSnapshot {
 			// if the message is a transfer message
 			// and it is sent by other users, then handle it
 			if msg.UserID != client.ClientID {
@@ -60,16 +61,13 @@ func main() {
 			}
 			// or just drop it
 			return nil
-		case mixin.MessageCategoryPlainText:
+		} else if msg.Category == mixin.MessageCategoryPlainText {
 			// if the message is a text message
 			// then handle the message
 			return handleTextMessage(ctx, msg)
-		default:
-			// TODO: implement
-			askForSymbol(ctx, msg)
+		} else {
+			return askForSymbol(ctx, msg)
 		}
-
-		return nil
 	}
 
 	ctx := context.Background()
